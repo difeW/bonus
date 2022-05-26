@@ -2,7 +2,7 @@
 # routing internally.
 [[redirects]]
   from = "/*"
-  to = "/index.js"
+  to = "/index.html"
   status = 200
 
 [[headers]]
