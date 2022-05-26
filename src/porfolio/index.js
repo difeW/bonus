@@ -9,19 +9,19 @@ export default class Porfolio extends Component {
   render() {
     return (
       <div className="porfolio">
-        <PortfolioNavbar/>
+        <PortfolioNavbar />
         <div className="porfolio__content">
           <div className="content__paging">
             project 1/9
           </div>
-          
+
           <div className="content__items">
             <div className="item__img">
-              <img src={oiiprofile} />
+              <img src={oiiprofile} alt="dsds" />
             </div>
             <div className="item__names">
-                        <div className="name__style name__active" onClick={() => this.props.history.push("/home")}>Dear as salt</div>
-              <div className="name__style" onClick={()=> window.open('https://ndrcldrll.github.io/kelby/about/')}>the town of kelby</div>
+              <div className="name__style name__active" onClick={() => this.props.history.push("/home")}>Dear as salt</div>
+              <div className="name__style" onClick={() => window.open('https://ndrcldrll.github.io/kelby/about/')}>the town of kelby</div>
               <div className="name__style">sugar and salt</div>
               <div className="name__style">MODA</div>
               <div className="name__style">Oi!studio</div>
@@ -30,7 +30,7 @@ export default class Porfolio extends Component {
             </div>
           </div>
           <div className="content__social">
-          <img src={oiisocial} />
+            <img src={oiisocial} alt="dsds" />
           </div>
           <div className="content__coming">
             coming soon

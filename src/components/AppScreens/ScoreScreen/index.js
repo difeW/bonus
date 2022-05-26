@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { NavLink } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import shopbtn from 'contents/images/buttons/shopbtn.png';
 import sharebtn from 'contents/images/buttons/sharebtn.png';
 import replaybtn from 'contents/images/buttons/replaybtn.png';
@@ -11,7 +9,7 @@ export default class ScoreScreen extends Component {
     this.state = { items: [], loading: true };
   }
   async componentDidMount() {
-    const res = await fetch("https://mobile12346.herokuapp.com/game/score").then(response => response.json())
+    await fetch("https://mobile12346.herokuapp.com/game/score").then(response => response.json())
       .then(data => {
         this.setState({
           loading: false,
@@ -81,17 +79,17 @@ export default class ScoreScreen extends Component {
             {contents}
             <div className="score__actionbtngroup">
               <div className="actionbtngroup__item">
-                <img src={shopbtn} />
+                <img src={shopbtn} alt="dsds" />
                 <div>shop</div>
               </div>
               <div className="actionbtngroup__item" onClick={() => this.onClickreplayBtn()}>
-                <img src={replaybtn} />
+                <img src={replaybtn} alt="dsds" />
                 <div>replay</div>
               </div>
               <div className="actionbtngroup__item"
               //onClick={() => this.onClickShareBtn()}
               >
-                <img src={sharebtn} />
+                <img src={sharebtn} alt="dsds" />
                 <div>share </div>
               </div>
             </div>

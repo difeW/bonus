@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/css";
 import instructionimg1 from "contents/images/instructions-screen1.png";
 import instructionimg2 from "contents/images/instructions-screen2.png";

@@ -385,10 +385,10 @@ export default class GameScreen extends Component {
     });
   };
   handleGameSubmit = async () => {
-    if (this.state.submitting == false) {
+    if (this.state.submitting === false) {
       this.setState({ isLoading: true, submitting: true });
       var name = this.state.userName;
-      if (name != null && name != "") {
+      if (name !== null && name !== "") {
         var data = {
           username: name,
           score: this.state.yourPoint,
@@ -442,26 +442,27 @@ export default class GameScreen extends Component {
       var questions = this.state.gameSession;
       // console.log("questions", questions)
       _answers.map((answer, index) => {
-        var index = questions.findIndex(
+        var i = questions.findIndex(
           (f) => f.question.id === answer.questionId
         );
         if (index >= 0) {
-          var qInfo = questions[index].question;
+          var qInfo = questions[i].question;
           myPoint +=
-            qInfo.isCorrect == answer.selection
+            qInfo.isCorrect === answer.selection
               ? qInfo.point
               : qInfo.inCorrectPoint;
         }
+        return null;
       });
       let _dialogText = "";
       let _questionText = "";
       let _infoText = "";
-      if (nextQuestion != null) {
+      if (nextQuestion !== null) {
         _dialogText = nextQuestion.description;
         _questionText = nextQuestion.content;
         _infoText = nextQuestion.info;
       }
-      let isFinish = _answers.length == this.state.qLength;
+      let isFinish = _answers.length === this.state.qLength;
       this.setState({
         answers: _answers,
         yourPoint: Number(myPoint.toFixed(0)),
@@ -476,15 +477,15 @@ export default class GameScreen extends Component {
     };
     var currentPercent = (this.state.yourPoint * 100) / this.state.maxPoint;
     //console.log(currentPercent)
-    const onShowExtendInfo = (info) => {
-      //todo show extend info
+    // const onShowExtendInfo = (info) => {
+    //   //todo show extend info
 
-      //
-      //console.log(info);
-      this.setState({
-        infoText: info,
-      });
-    };
+    //   //
+    //   //console.log(info);
+    //   this.setState({
+    //     infoText: info,
+    //   });
+    // };
 
     return (
       <div
@@ -495,9 +496,9 @@ export default class GameScreen extends Component {
         <div className="game__navbar">
           <Progress percent={currentPercent} />
         </div>
-        {this.state.isFinish != true ? (
+        {this.state.isFinish !== true ? (
           <Fragment>
-            {this.state.isLoading != false ? (
+            {this.state.isLoading !== false ? (
               <LoadingScreen />
             ) : (
               <div className="sas__gamewrapper">
@@ -519,7 +520,7 @@ export default class GameScreen extends Component {
                         className="sas__gameitem"
                       //style={{height: window.innerWidth <= 767 ? `${window.innerHeight}px` : '100vh'}}
                       >
-                        <img src={_src} />
+                        <img src={_src} alt="dsdsd" />
 
                         <div className="gameitem__dialog">
                           {this.state.dialogText}
@@ -541,9 +542,9 @@ export default class GameScreen extends Component {
                             <span>{this.state.questionText}</span>
                             <span className="help__joker">
                               {this.state.isPaneOpenBottom ? (
-                                <img src={jokerimg} />
+                                <img src={jokerimg} alt="dsdsd" />
                               ) : (
-                                <img src={jokerimgUp} />
+                                <img src={jokerimgUp} alt="dsdsd" />
                               )}
                             </span>
                           </div>
@@ -579,7 +580,7 @@ export default class GameScreen extends Component {
                 }
                 placeholder="Name"
               />
-              {this.state.submitting == false ? (
+              {this.state.submitting === false ? (
                 <div
                   className="gameform__submitbtn"
                   onClick={() => this.handleGameSubmit()}
