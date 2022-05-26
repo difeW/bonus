@@ -3,8 +3,6 @@ import GameScreen from 'components/AppScreens/GameScreen';
 import HomeScreen from 'components/AppScreens/HomeScreen';
 import InstructionsScreen from 'components/AppScreens/InstructionsScreen';
 import ScoreScreen from 'components/AppScreens/ScoreScreen';
-import Porfolio from 'porfolio/index.js';
-import AboutPorfolio from 'porfolio/About';
 const appRoutes = [
   //{
   //  exact: true,
@@ -16,11 +14,11 @@ const appRoutes = [
   //  path: '/oii-studio/about',
   //  component: AboutPorfolio
   //},
-   {
-     exact: true,
-     path: '/',
-     component: HomeScreen
-   }, 
+  {
+    exact: true,
+    path: '/',
+    component: HomeScreen
+  },
   //{
   //  exact: true,
   //  path: '/sweet-as-salt/home',
