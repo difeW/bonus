@@ -11,7 +11,21 @@ export default class ScoreScreen extends Component {
     this.state = { items: [], loading: true };
   }
   componentDidMount() {
-    this.fetchData();
+    this.setState({
+      loading: false,
+      items: [
+        {
+          rank: '1',
+          name: 'dsds',
+          totalScore: 500
+        },
+        {
+          rank: '2',
+          name: 'dsds',
+          totalScore: 500
+        }
+      ]
+    })
   }
   static fetchData(data) {
     return (
@@ -29,10 +43,10 @@ export default class ScoreScreen extends Component {
     );
   }
   onClickShareBtn = () => {
-      this.props.history.push("/game");
+    this.props.history.push("/game");
   }
   onClickreplayBtn = () => {
-      this.props.history.push("/game");
+    this.props.history.push("/game");
   }
 
   render() {
@@ -42,35 +56,35 @@ export default class ScoreScreen extends Component {
 
     return (
       (this.state.loading) ? (
-        <LoadingScreen/>
+        <LoadingScreen />
       ) : (
-          <div className="sas__blankpaper" style={{height: window.innerHeight}}>
-            <div className="sas__score">
-              <div className="score__header">
-                <div className="score__headermain">top best kings</div>
-                <div className="score__headersub">of all times</div>
+        <div className="sas__blankpaper" style={{ height: window.innerHeight }}>
+          <div className="sas__score">
+            <div className="score__header">
+              <div className="score__headermain">top best kings</div>
+              <div className="score__headersub">of all times</div>
+            </div>
+            {contents}
+            <div className="score__actionbtngroup">
+              <div className="actionbtngroup__item">
+                <img src={shopbtn} />
+                <div>shop</div>
               </div>
-              {contents}
-              <div className="score__actionbtngroup">
-                <div className="actionbtngroup__item">
-                  <img src={shopbtn} />
-                  <div>shop</div>
-                </div>
-                <div className="actionbtngroup__item"  onClick={() => this.onClickreplayBtn()}>
-                  <img src={replaybtn} />
-                  <div>replay</div>
-                </div>
-                <div className="actionbtngroup__item" 
-                  //onClick={() => this.onClickShareBtn()}
-                >
-                  <img src={sharebtn} />
-                  <div>share </div>
-                </div>
+              <div className="actionbtngroup__item" onClick={() => this.onClickreplayBtn()}>
+                <img src={replaybtn} />
+                <div>replay</div>
+              </div>
+              <div className="actionbtngroup__item"
+              //onClick={() => this.onClickShareBtn()}
+              >
+                <img src={sharebtn} />
+                <div>share </div>
               </div>
             </div>
           </div>
+        </div>
 
-        )
+      )
 
     );
   }

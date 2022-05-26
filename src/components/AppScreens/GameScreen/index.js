@@ -26,9 +26,45 @@ export default class GameScreen extends Component {
       submitting: false,
     };
   }
+  sleep(ms) {
+    return new Promise(resolve => {
+      setTimeout(resolve, ms)
+    });
+  }
   async componentDidMount() {
-    const response = await fetch("question/get");
-    const data = await response.json();
+    console.log('unmout')
+    // const response = await fetch("question/get");
+    await this.sleep(1000)
+    const data = {
+      qMaxPoint: 1000,
+      qLength: 2,
+      characters: [
+        {
+          contentUrl: 'achemist.png',
+          question: {
+            id: '1',
+            content: 'QuestionText',
+            description: 'DialogText',
+            info: 'Infotext',
+            inCorrectPoint: 500,
+            point: 100,
+            isCorrect: true
+          }
+        },
+        {
+          contentUrl: 'king.png',
+          question: {
+            id: '2',
+            content: 'QuestionText1',
+            description: 'DialogText1',
+            info: 'Infotext1',
+            inCorrectPoint: 500,
+            point: 100,
+            isCorrect: true
+          }
+        },
+      ]
+    }
     if (data != null && data.characters != null) {
       var length = data.characters.length;
       var nextQuestion = length > 0 ? data.characters[0].question : null;
@@ -68,6 +104,7 @@ export default class GameScreen extends Component {
           userFullName: name,
           answers: this.state.answers,
         };
+        console.log(data)
         await fetch("question/submit", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -111,7 +148,7 @@ export default class GameScreen extends Component {
       }
       var myPoint = 0;
       var questions = this.state.gameSession;
-      //console.log("questions", questions)
+      // console.log("questions", questions)
       _answers.map((answer, index) => {
         var index = questions.findIndex(
           (f) => f.question.id === answer.questionId
@@ -168,7 +205,7 @@ export default class GameScreen extends Component {
         </div>
         {this.state.isFinish != true ? (
           <Fragment>
-            {this.state.isLoading == true ? (
+            {this.state.isLoading != false ? (
               <LoadingScreen />
             ) : (
               <div className="sas__gamewrapper">
@@ -188,7 +225,7 @@ export default class GameScreen extends Component {
                         }
                         preventSwipe={["up", "down"]}
                         className="sas__gameitem"
-                        //style={{height: window.innerWidth <= 767 ? `${window.innerHeight}px` : '100vh'}}
+                      //style={{height: window.innerWidth <= 767 ? `${window.innerHeight}px` : '100vh'}}
                       >
                         <img src={_src} />
 
@@ -199,11 +236,10 @@ export default class GameScreen extends Component {
                           {item.name}
                         </div>
                         <div
-                          className={`gameitem__help ${
-                            this.state.isPaneOpenBottom
-                              ? "height-translate"
-                              : ""
-                          }`}
+                          className={`gameitem__help ${this.state.isPaneOpenBottom
+                            ? "height-translate"
+                            : ""
+                            }`}
                         >
                           <div
                             onClick={() => this.onShowHelpText()}
