@@ -10,22 +10,36 @@ export default class ScoreScreen extends Component {
     super(props);
     this.state = { items: [], loading: true };
   }
-  componentDidMount() {
-    this.setState({
-      loading: false,
-      items: [
-        {
-          rank: '1',
-          name: 'dsds',
-          totalScore: 500
-        },
-        {
-          rank: '2',
-          name: 'dsds',
-          totalScore: 500
-        }
-      ]
-    })
+  async componentDidMount() {
+    const res = await fetch("https://mobile12346.herokuapp.com/game/score").then(response => response.json())
+      .then(data => {
+        this.setState({
+          loading: false,
+          items: data.map((item, index) => {
+            return {
+              rank: index + 1,
+              name: item.username,
+              totalScore: item.score
+            }
+          })
+        })
+        // this.setState({
+        //   loading: false,
+        //   items: [
+        //     {
+        //       rank: '1',
+        //       name: 'dsds',
+        //       totalScore: 500
+        //     },
+        //     {
+        //       rank: '2',
+        //       name: 'dsds',
+        //       totalScore: 500
+        //     }
+        //   ]
+        // })
+      });
+
   }
   static fetchData(data) {
     return (
@@ -35,7 +49,7 @@ export default class ScoreScreen extends Component {
             <tr key={item.id}>
               <td>{item.rank}</td>
               <td>{item.name}</td>
-              <td>{Number(item.totalScore.toFixed(1))}</td>
+              < td > {Number(item.totalScore.toFixed(1))}</td>
             </tr>
           )}
         </tbody>
