@@ -425,6 +425,7 @@ export default class GameScreen extends Component {
         //   onShowExtendInfo(nextQuestion.info);
         //   break;
         // }
+        default: break;
       }
     };
     const onAnswer = (selection, question, nextQuestion) => {

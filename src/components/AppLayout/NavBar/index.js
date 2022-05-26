@@ -7,7 +7,7 @@ export default class NavBar extends Component {
             <div className="sas__navbar">
                 <div className="navbar__logo">
                     <NavLink activeClassName="active" className="nav-link" to="/">
-                        <img src={logoimg} className="navbar__logoimg" alt="description of image" />
+                        <img src={logoimg} className="navbar__logoimg" alt="description" />
                     </NavLink>
                 </div>
                 <div className="navbar__menu">

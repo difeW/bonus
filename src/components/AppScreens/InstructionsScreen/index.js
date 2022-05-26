@@ -25,10 +25,10 @@ export default class InstructionsScreen extends Component {
         <div className="sas__instructions">
           <Slider {...settings}>
             <div>
-              <img src={instructionimg1} className="instructions__one" />
+              <img src={instructionimg1} alt="dsdsds" className="instructions__one" />
             </div>
             <div>
-              <img src={instructionimg2} className="instructions__two" />
+              <img src={instructionimg2} alt="dsdsds" className="instructions__two" />
             </div>
           </Slider>
         </div>

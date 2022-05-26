@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from "react-router-dom";
 import '../contents/styles/porfolio/styles.scss';
-import oiilogo from '../contents/images/porfolio/oii-logo.png';
 import oiisocial from '../contents/images/porfolio/social.png';
 import oiiprofile from '../contents/images/porfolio/sas-profile.png';
 import PortfolioNavbar from './PortfolioNavbar';
