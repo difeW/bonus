@@ -398,7 +398,9 @@ export default class GameScreen extends Component {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
+            "Access-Control-Allow-Origin": "*",
+            'Access-Control-Allow-Headers': 'Content-Type, X-Auth-Token, Authorization, Origin',
+            'Access-Control-Allow-Methods': 'POST, PUT'
           },
           body: JSON.stringify(data),
         });
