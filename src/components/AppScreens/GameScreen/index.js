@@ -8,7 +8,7 @@ import "react-sweet-progress/lib/style.css";
 import { Context } from "Context/Context";
 
 
-const { list, setlist } = useContext(Context)
+
 
 const DataMain = [
   {
@@ -283,6 +283,8 @@ const DataMain = [
 ]
 
 export default class GameScreen extends Component {
+  static contextType = Context
+
   constructor(props) {
     super(props);
     this.state = {
@@ -396,10 +398,10 @@ export default class GameScreen extends Component {
           username: name,
           score: this.state.yourPoint,
         };
-        let newList = list.slice()
+        let newList = this.context.list.slice()
         newList.push(data)
-        newList.sort((a, b) => (a.score > b.score) ? 1 : -1)
-        setlist(newList)
+        newList.sort((a, b) => (a.score < b.score) ? 1 : -1)
+        this.context.setlist(newList)
         // await fetch("https://mobile12346.herokuapp.com/game/score", {
         //   method: "POST",
         //   headers: {

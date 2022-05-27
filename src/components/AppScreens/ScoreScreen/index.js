@@ -5,9 +5,9 @@ import replaybtn from 'contents/images/buttons/replaybtn.png';
 import LoadingScreen from 'components/AppScreens/LoadingScreen';
 import { Context } from 'Context/Context';
 
-const { list } = useContext(Context)
+// const { list } = useContext(Context)
 export default class ScoreScreen extends Component {
-
+  static contextType = Context
   constructor(props) {
     super(props);
     this.state = { items: [], loading: true };
@@ -15,7 +15,7 @@ export default class ScoreScreen extends Component {
   async componentDidMount() {
     this.setState({
       loading: false,
-      items: list.map((item, index) => {
+      items: this.context.list.map((item, index) => {
         return {
           rank: index + 1,
           name: item.username,
