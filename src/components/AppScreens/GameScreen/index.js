@@ -396,6 +396,7 @@ export default class GameScreen extends Component {
 
         await fetch("https://mobile12346.herokuapp.com/game/score", {
           method: "POST",
+          mode: 'no-cors',
           headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
