@@ -9,7 +9,7 @@ export default class ScoreScreen extends Component {
     this.state = { items: [], loading: true };
   }
   async componentDidMount() {
-    await fetch("https://mobile12346.herokuapp.com/game/score").then(response => response.json())
+    await fetch("https://mobile12346.herokuapp.com/game/score", { mode: 'no-cors' }).then(response => response.json())
       .then(data => {
         this.setState({
           loading: false,
