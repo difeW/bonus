@@ -288,6 +288,7 @@ export default class GameScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentID: 0,
       maxPoint: 0,
       qLength: 0,
       gameSession: null,
@@ -372,6 +373,7 @@ export default class GameScreen extends Component {
       }
       //console.log(data);
       this.setState({
+        currentID: 0,
         maxPoint: data.qMaxPoint,
         qLength: data.qLength,
         gameSession: data.characters,
@@ -472,6 +474,7 @@ export default class GameScreen extends Component {
       }
       let isFinish = _answers.length === this.state.qLength;
       this.setState({
+        currentID: this.state.currentID + 1,
         answers: _answers,
         yourPoint: Number(myPoint.toFixed(0)),
         dialogText: _dialogText,
@@ -483,7 +486,7 @@ export default class GameScreen extends Component {
       //console.log(this.state.answers);
       //console.log('yourPoint', this.state.yourPoint);
     };
-    var currentPercent = (this.state.yourPoint * 100) / this.state.maxPoint;
+    var currentPercent = (this.state.currentID * 100) / 10;
     //console.log(currentPercent)
     // const onShowExtendInfo = (info) => {
     //   //todo show extend info
