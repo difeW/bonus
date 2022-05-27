@@ -1,5 +1,5 @@
-import { createContext, useReducer, useEffect } from 'react'
-import { useContext, useState } from 'react'
+import { createContext } from 'react'
+import { useState } from 'react'
 
 export const Context = createContext()
 

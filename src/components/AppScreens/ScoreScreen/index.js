@@ -1,4 +1,4 @@
-import React, { Component, useContext } from 'react'
+import React, { Component } from 'react'
 import shopbtn from 'contents/images/buttons/shopbtn.png';
 import sharebtn from 'contents/images/buttons/sharebtn.png';
 import replaybtn from 'contents/images/buttons/replaybtn.png';

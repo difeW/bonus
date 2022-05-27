@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useContext } from "react";
+import React, { Component, Fragment } from "react";
 import TinderCard from "react-tinder-card";
 import LoadingScreen from "components/AppScreens/LoadingScreen";
 import jokerimg from "contents/images/game/joker.png";
