@@ -1,11 +1,14 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useContext } from "react";
 import TinderCard from "react-tinder-card";
 import LoadingScreen from "components/AppScreens/LoadingScreen";
 import jokerimg from "contents/images/game/joker.png";
 import jokerimgUp from "contents/images/game/joker-up.png";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
+import { Context } from "Context/Context";
 
+
+const { list, setlist } = useContext(Context)
 
 const DataMain = [
   {
@@ -393,14 +396,17 @@ export default class GameScreen extends Component {
           username: name,
           score: this.state.yourPoint,
         };
-
-        await fetch("https://mobile12346.herokuapp.com/game/score", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+        let newList = list.slice()
+        newList.push(data)
+        newList.sort((a, b) => (a.score > b.score) ? 1 : -1)
+        setlist(newList)
+        // await fetch("https://mobile12346.herokuapp.com/game/score", {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify(data),
+        // });
       }
       this.setState({ isLoading: false, submitting: false });
       this.props.history.push("/score");

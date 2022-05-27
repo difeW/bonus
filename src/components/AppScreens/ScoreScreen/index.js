@@ -1,44 +1,44 @@
-import React, { Component } from 'react'
+import React, { Component, useContext } from 'react'
 import shopbtn from 'contents/images/buttons/shopbtn.png';
 import sharebtn from 'contents/images/buttons/sharebtn.png';
 import replaybtn from 'contents/images/buttons/replaybtn.png';
 import LoadingScreen from 'components/AppScreens/LoadingScreen';
+import { Context } from 'Context/Context';
+
+const { list } = useContext(Context)
 export default class ScoreScreen extends Component {
+
   constructor(props) {
     super(props);
     this.state = { items: [], loading: true };
   }
   async componentDidMount() {
-    await fetch("https://mobile12346.herokuapp.com/game/score").then(response => response.json())
-      .then(data => {
-        this.setState({
-          loading: false,
-          items: data.map((item, index) => {
-            return {
-              rank: index + 1,
-              name: item.username,
-              totalScore: item.score
-            }
-          })
-        })
-        // this.setState({
-        //   loading: false,
-        //   items: [
-        //     {
-        //       rank: '1',
-        //       name: 'dsds',
-        //       totalScore: 500
-        //     },
-        //     {
-        //       rank: '2',
-        //       name: 'dsds',
-        //       totalScore: 500
-        //     }
-        //   ]
-        // })
-      });
-
-  }
+    this.setState({
+      loading: false,
+      items: list.map((item, index) => {
+        return {
+          rank: index + 1,
+          name: item.username,
+          totalScore: item.score
+        }
+      })
+    })
+    // this.setState({
+    //   loading: false,
+    //   items: [
+    //     {
+    //       rank: '1',
+    //       name: 'dsds',
+    //       totalScore: 500
+    //     },
+    //     {
+    //       rank: '2',
+    //       name: 'dsds',
+    //       totalScore: 500
+    //     }
+    //   ]
+    // })
+  };
   static fetchData(data) {
     return (
       <table className='table table-responsive' aria-labelledby="tabelLabel">
