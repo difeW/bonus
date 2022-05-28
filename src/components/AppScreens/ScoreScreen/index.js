@@ -13,22 +13,22 @@ export default class ScoreScreen extends Component {
     this.state = { items: [], loading: true };
   }
   async componentDidMount() {
-    const a = await fetch("https://mobile12346.herokuapp.com/game/score", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    this.setState({
-      loading: false,
-      items: a.data.map((item, index) => {
-        return {
-          rank: index + 1,
-          name: item.username,
-          totalScore: item.score
-        }
-      })
-    })
+
+    fetch('https://mobile12346.herokuapp.com/game/score')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          loading: false,
+          items: data.map((item, index) => {
+            return {
+              rank: index + 1,
+              name: item.username,
+              totalScore: item.score
+            }
+          })
+        })
+      });
+
     // this.setState({
     //   loading: false,
     //   items: this.context.list.map((item, index) => {
