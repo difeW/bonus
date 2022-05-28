@@ -21,7 +21,7 @@ export default class ScoreScreen extends Component {
     });
     this.setState({
       loading: false,
-      items: a.data.list.map((item, index) => {
+      items: a.data.map((item, index) => {
         return {
           rank: index + 1,
           name: item.username,
