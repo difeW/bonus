@@ -13,9 +13,15 @@ export default class ScoreScreen extends Component {
     this.state = { items: [], loading: true };
   }
   async componentDidMount() {
+    const a = await fetch("https://mobile12346.herokuapp.com/game/score", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     this.setState({
       loading: false,
-      items: this.context.list.map((item, index) => {
+      items: a.data.list.map((item, index) => {
         return {
           rank: index + 1,
           name: item.username,
@@ -25,19 +31,15 @@ export default class ScoreScreen extends Component {
     })
     // this.setState({
     //   loading: false,
-    //   items: [
-    //     {
-    //       rank: '1',
-    //       name: 'dsds',
-    //       totalScore: 500
-    //     },
-    //     {
-    //       rank: '2',
-    //       name: 'dsds',
-    //       totalScore: 500
+    //   items: this.context.list.map((item, index) => {
+    //     return {
+    //       rank: index + 1,
+    //       name: item.username,
+    //       totalScore: item.score
     //     }
-    //   ]
+    //   })
     // })
+
   };
   static fetchData(data) {
     return (
